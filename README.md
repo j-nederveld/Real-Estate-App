@@ -1,6 +1,6 @@
 Project Proposal Guide
 
-Group Name: The Money Maker
+Group Name: The Git Pushers
 
 Project Name: Real Estate App
 
