@@ -1,12 +1,14 @@
 Project Proposal Guide
 
-Group Name: 
+Group Name: The Money Maker
 
-Project Name: 
+Project Name: Real Estate App
 
 Link to the KanBan Board: 
+https://github.com/j-nederveld/Real-Estate-App/projects/1
 
 Link to the Project Repo: 
+https://github.com/j-nederveld/Real-Estate-App
 
 Burndown Schedule: 
 
