@@ -1,3 +1,9 @@
+
+
+
+
+
+
 city = $(".city").val();
 state = $(".state").val();
 
