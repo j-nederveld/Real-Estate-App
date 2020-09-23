@@ -22,7 +22,7 @@ function doTheThing() {
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "https://realtor.p.rapidapi.com/properties/v2/list-for-rent?sort=relevance&city=" + city + "&state_code=" + state + "&limit=200&offset=0",
+    "url": "https://realtor.p.rapidapi.com/properties/v2/list-for-rent?sort=relevance&city=" + city + "&state_code=" + state + "&limit=100&offset=0",
     "method": "GET",
     "headers": {
       "x-rapidapi-host": "realtor.p.rapidapi.com",
