@@ -1,1 +1,37 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .scrolling-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+        }
+  .card {
+    overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+    display: inline-block;
+  }
+
+    </style>
+</head>
+<body>
+    <form class="search">
+        <input id="input" class="city submit" type="text" placeholder="city">
+        <input id="input" class="state submit" type="text" placeholder="state">
+        <button type="submit" class="submit">submit</button><br>
+    </form>    
+
+    <div class="scrolling-wrapper">
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="jp.js"></script>
+</body>
+</html>

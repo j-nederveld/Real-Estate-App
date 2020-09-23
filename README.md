@@ -12,6 +12,8 @@ https://github.com/j-nederveld/Real-Estate-App
 
 Burndown Schedule: 
 
+
+
 Overview of the project: 
     As a homebuyer, I want to see greater information on the area that I am looking at in order to be more confident in my home buying purchase. 
 
