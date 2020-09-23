@@ -15,6 +15,11 @@ Burndown Schedule:
     Samer: HTML/CSS/Uikit
     JP: JS/Jquery/API
     Lyric: JS/Jquery/API
+    
+    9/23 - get basic page outline coded in html
+         - start putting information from our API's onto the page 
+    9/24-25 - organize and style data
+         - create any further functionality
 
 Overview of the project: 
     As a homebuyer, I want to see greater information on the area that I am looking at in order to be more confident in my real estate purchase. 
