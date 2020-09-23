@@ -25,23 +25,30 @@ var settings = {
   }
   
   $.ajax(settings).done(function (response) {
+    console.log(response)
     for (i = 0; i < response.properties.length; i++) {
-        var cardDiv = $("<div>")
+        var cardDiv = $("<div>");
+        var propertyImage = $("<img>");
+        if (response.properties[i].photo_count != 0){
+        propertyImage.attr("src", response.properties[i].photos[0].href);
+        }
         var propertyInfo = $("<ul>");
         var address = $("<li>");
         var cityState = $("<li>");
         var propertyType = $("<li>");
         var propertyURL = $("<li>");
         cardDiv.addClass("card");
+        propertyImage.addClass("property-image");
         address.text(response.properties[i].address.line);
         cityState.text(city + ', ' + state);
-        propertyType.text(response.properties[i].prop_type)
+        propertyType.text(response.properties[i].prop_type);
         propertyURL.html("<a href=" + response.properties[i].rdc_web_url + ">Link to Property</a>");
         propertyInfo.append(address);
         propertyInfo.append(cityState);
         propertyInfo.append(propertyType);
         propertyInfo.append(propertyURL);
         cardDiv.append(propertyInfo);
+        cardDiv.prepend(propertyImage);
         $(".scrolling-wrapper").append(cardDiv);
     }
   })
