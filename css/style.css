@@ -42,3 +42,28 @@ body {
        color:#efeee7;
        text-align: center;
      }
+
+     .scrolling-wrapper {
+      overflow-x: scroll;
+      overflow-y: hidden;
+      white-space: nowrap;
+      border-top: 1px solid #000;
+      border-bottom: 1px solid #000;
+      background-color:#EFEEE7;
+      }
+      
+      .card {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        white-space: nowrap;
+        display: inline-block;
+        margin: 20px;
+        border: 5px solid rgb(79,40,6);
+        padding: 20px;
+        border-radius: 5px;
+        background-color: lightblue;
+      }
+
+      .property-image {
+          max-height: 150px;
+      }
