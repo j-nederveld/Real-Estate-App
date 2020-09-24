@@ -10,6 +10,9 @@ https://github.com/j-nederveld/Real-Estate-App/projects/1
 Link to the Project Repo: 
 https://github.com/j-nederveld/Real-Estate-App
 
+Link to depoloyed page:
+https://j-nederveld.github.io/Real-Estate-App/
+
 Burndown Schedule: 
     Elliot: HTML/CSS/Uikit
     Samer: HTML/CSS/Uikit
