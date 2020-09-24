@@ -17,6 +17,10 @@ body {
     height: 100px;
   }
 
+  .card-ul {
+    text-align: left;
+  }
+
   h1 {
     padding: 40px 0;
     margin: 0;
