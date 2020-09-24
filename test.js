@@ -143,10 +143,9 @@ var settings = {
         cardDiv.append(propertyInfo);
         cardDiv.append(infoButton);
         cardDiv.prepend(propertyImage);
-
+        innerDiv.attr("result", i)
         innerDiv.append(cardDiv);
         $(".uk-grid-column-small").append(innerDiv);
     }
-    
   })
 }
