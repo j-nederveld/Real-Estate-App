@@ -72,13 +72,19 @@ var settings = {
   }
   
   $.ajax(settings).done(function (response) {
-    
+    var cardGrid = $("<div>");
     for (i = 0; i < response.properties.length; i++) {
         var cardDiv = $("<div>");
+        
+        var innerDiv = $("<div>");
         var propertyImage = $("<img>");
         if (response.properties[i].photo_count != 0){
         propertyImage.attr("src", response.properties[i].photos[0].href);
         }
+
+        cardGrid.addClass("uk-grid-column-small uk-grid-row-large uk-child-width-1-3@s uk-text-center");
+        cardGrid.attr("uk-grid", "")
+        cardDiv.addClass("uk-card uk-card-default uk-card-body");
   
         var infoButton = $("<button>");
         infoButton.attr("type", "button");
@@ -112,7 +118,10 @@ var settings = {
         cardDiv.append(propertyInfo);
         cardDiv.append(infoButton);
         cardDiv.prepend(propertyImage);
-        $(".scrolling-wrapper").append(cardDiv);
+
+        innerDiv.append(cardDiv);
+        $(".uk-grid-column-small").append(innerDiv);
     }
+    
   })
 }
