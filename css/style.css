@@ -46,3 +46,45 @@ body {
 nav {
     background-color: rgb(79,40,6);
 }
+
+.scrolling-wrapper {
+ overflow-x: scroll;
+ overflow-y: hidden;
+ white-space: nowrap;
+ border-top: 1px solid #000;
+ border-bottom: 1px solid #000;
+ background-color:#EFEEE7;
+ }
+ 
+ .card {
+   overflow-x: scroll;
+   overflow-y: hidden;
+   white-space: nowrap;
+   display: inline-block;
+   margin: 20px;
+   border: 5px solid rgb(79,40,6);
+   padding: 20px;
+   border-radius: 5px;
+   background-color: lightblue;
+ }
+ .property-image {
+     max-height: 150px;
+ }
+h1.slideshow-h1 {
+   padding: 10px 0 0 0;
+   margin: 0;
+}
+
+h3.slideshow-h3 {
+   margin: 0px;
+   text-align: center;
+}
+.slideshow-desc {
+ color: #000;
+}
+.uk-container {
+ background-color: #efeee7;
+}
+.hide {
+ display: none !important;
+}
