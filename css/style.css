@@ -96,3 +96,9 @@ body {
     .hide {
       display: none !important;
     }
+
+    .submit {
+      background-color: rgb(79,40,6);
+      color: white !important;
+      border-radius: 5px !important;
+    }
