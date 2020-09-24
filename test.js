@@ -96,6 +96,7 @@ var settings = {
 
 
         var propertyInfo = $("<ul>");
+        propertyInfo.addClass("card-ul");
         var address = $("<li>");
         var cityState = $("<li>");
         var propertyType = $("<li>");
