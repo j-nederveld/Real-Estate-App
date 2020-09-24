@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,9 +12,7 @@
     <header>
         <img src="images/Landmark (8).png">
     </header>
-
-<div class="container">
-
+    <div class="uk-container">
       <form class="search">
         <input id="input" class="city submit" type="text" placeholder="city">
         <select class="state">
@@ -74,14 +71,16 @@
         <button type="submit" class="submit">submit</button><br>
       </form>    
         
-        <div class="scrolling-wrapper">
+      <div class="uk-grid-column-small uk-grid-row-large uk-child-width-1-3@s uk-text-center" uk-grid>
                 
         </div>
-</div>
+    </div>
     <!-- SLIDESHOW CONTENT -->
+    <div class="uk-container hide slideshowContainer">
     <div uk-slideshow="animation: push" style="width: 50%; margin: 0 auto;">
       <h1 class="slideshow-h1"></h1>
       <h3 class="slideshow-h3"></h3>
+      <p class="slideshow-desc"></p>
         <ul class="property-details"></ul>
           <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
               <ul class="uk-slideshow-items"></ul>
@@ -90,16 +89,14 @@
           </div>  
         <ul class="uk-slideshow-nav uk-dotnav uk-flex-center uk-margin"></ul>
     </div>
+    </div>
     <!-- END SLIDESHOW -->
 
 <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/js/uikit.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/js/uikit-icons.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="jp.js"></script>
+<script src="test.js"></script>
+
+
 </body>
-
-<div class="footer">
-    <p>CopyRight&#174;</p>
-  </div>
-
-</html> 
+</html>

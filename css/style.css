@@ -1,3 +1,5 @@
+
+
 body {
     padding: 0;
     margin: 0;
@@ -5,7 +7,8 @@ body {
     font-size: 18px;
     line-height: 150%;
     color: #333;
-    background: #efeee7;
+    background-color: #efeee7;
+    height: 100vh;
   }
 
 
@@ -67,3 +70,25 @@ body {
       .property-image {
           max-height: 150px;
       }
+
+    h1.slideshow-h1 {
+        padding: 10px 0 0 0;
+        margin: 0;
+    }
+    
+    h3.slideshow-h3 {
+        margin: 0px;
+        text-align: center;
+    }
+
+    .slideshow-desc {
+      color: #000;
+    }
+
+    .uk-container {
+      background-color: #efeee7;;
+    }
+
+    .hide {
+      display: none !important;
+    }
