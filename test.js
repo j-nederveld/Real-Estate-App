@@ -1,5 +1,8 @@
 city = $(".city").val();
 state = $(".state").val();
+bedsMin = $(".beds-min").val();
+bathsMin = $(".baths-min").val();
+priceMax = $(".price-max").val();
 propertyID = '';
 listingID = '';
 
@@ -7,6 +10,12 @@ $('body').on('submit', '.search', function(e) {
     e.preventDefault();
     state = $(".state").val();
     city = $(".city").val();
+    bedsMin = $(".beds-min").val();
+    bathsMin = $(".baths-min").val();
+    priceMax = $(".price-max").val();
+    console.log(bedsMin);
+    console.log(bathsMin);
+    console.log(priceMax);
     doTheThing();
   });
 
@@ -63,7 +72,7 @@ function doTheThing() {
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "https://realtor.p.rapidapi.com/properties/v2/list-for-rent?sort=relevance&city=" + city + "&state_code=" + state + "&limit=100&offset=0",
+    "url": "https://realtor.p.rapidapi.com/properties/v2/list-for-rent?sort=relevance&city=" + city + "&state_code=" + state + "&beds_min=" + bedsMin + "&baths_min=" + bathsMin + "&price_max=" + priceMax + "&limit=100&offset=0",
     "method": "GET",
     "headers": {
       "x-rapidapi-host": "realtor.p.rapidapi.com",
