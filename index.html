@@ -1,18 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RealEstateApp</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/css/uikit.min.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RealEstateApp</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/css/uikit.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
 <body>
-    <header>
-        <img src="images/Landmark (8).png">
-    </header>
-    <div class="uk-container">
+ 
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <img src="images/Landmark (8).png" class="navbar-brand" href="html-skeleton.html"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" href="html-skeleton.html" style="color: white">Home <span
+              class="sr-only">(current)</span></a>
+          <a class="nav-link" href="#" style="color: white">Link 2</a>
+          <a class="nav-link" href="#" style="color: white">Link 3</a>
+          </header>
+    <div class="uk-container" style="margin-top: 50px">
       <form class="search">
         <input style="color: black !important;" id="input" class="city submit uk-input" type="text" placeholder="city">
         <select class="state uk-select">
@@ -102,29 +117,84 @@ baths_min -->
       <div class="uk-grid-column-small uk-grid-row-large uk-child-width-1-3@s uk-text-center" uk-grid>
                 
         </div>
+      </div>
+    </nav>
+
+  <div class="uk-container" style="margin-top: 50px;">
+
+
+    <div class="uk-grid-column-small uk-grid-row-large uk-child-width-1-3@s uk-text-center" uk-grid>
+
     </div>
-    <!-- SLIDESHOW CONTENT -->
-    <div class="uk-container hide slideshowContainer">
+  </div>
+  <!-- SLIDESHOW CONTENT -->
+  <div class="uk-container hide slideshowContainer">
     <div uk-slideshow="animation: push" style="width: 50%; margin: 0 auto;">
       <h1 class="slideshow-h1"></h1>
       <h3 class="slideshow-h3"></h3>
       <p class="slideshow-desc"></p>
-        <ul class="property-details"></ul>
-          <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
-              <ul class="uk-slideshow-items"></ul>
-              <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
-              <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>      
-          </div>  
-        <ul class="uk-slideshow-nav uk-dotnav uk-flex-center uk-margin"></ul>
+      <ul class="property-details"></ul>
+      <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
+        <ul class="uk-slideshow-items"></ul>
+        <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous
+          uk-slideshow-item="previous"></a>
+        <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next
+          uk-slideshow-item="next"></a>
+      </div>
+      <ul class="uk-slideshow-nav uk-dotnav uk-flex-center uk-margin"></ul>
     </div>
-    </div>
-    <!-- END SLIDESHOW -->
+  </div>
+  <!-- The Modal -->
+<div id="myModal" class="modal">
 
-<script src="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/js/uikit.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/js/uikit-icons.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="test.js"></script>
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Some text in the Modal..</p>
+  </div>
 
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+  // END SLIDESHOW
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/js/uikit.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/js/uikit-icons.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="test.js"></script>
+</script>
 
 </body>
+
 </html>
