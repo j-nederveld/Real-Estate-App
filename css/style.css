@@ -68,7 +68,7 @@ body {
         border: 5px solid rgb(79,40,6);
         padding: 20px;
         border-radius: 5px;
-        background-color: lightblue;
+        background-color: lightblue !important;
       }
 
       .property-image {
