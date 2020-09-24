@@ -19,6 +19,7 @@ body {
 
   .card-ul {
     text-align: left;
+    padding: 0px;
   }
 
   h1 {
@@ -71,8 +72,15 @@ body {
         background-color: lightblue !important;
       }
 
+      
+
       .property-image {
           max-height: 150px;
+      }
+
+      .property-details {
+        padding: 0;
+        text-align: left;
       }
 
     h1.slideshow-h1 {
@@ -85,18 +93,27 @@ body {
         text-align: center;
     }
 
-    .slideshow-desc {
+    .uk-slideshow-items {
+      width: 100%;
+    }
+    /* reluctantly using important, necessary to override UI kit css */
+    .slideshowContainer {
+      padding: 0px !important;
+    }
+
+    .property-desc {
       color: #000;
+      text-align: left;
     }
 
     .uk-container {
       background-color: #efeee7;;
     }
-
-    .hide {
+    /* reluctantly using important, necessary to override UI kit css */
+    .hide {         
       display: none !important;
     }
-
+    /* reluctantly using important, necessary to override UI kit css */
     .submit {
       background-color: rgb(79,40,6);
       color: white !important;
@@ -107,3 +124,12 @@ body {
       width: 90%;
       margin: 0 auto;
     }
+
+    .uk-modal-dialog.uk-modal-body {
+      background-color: #efeee7;
+      width: 100%;
+  }
+
+  .error-text {
+    color: #000;
+  }

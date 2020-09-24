@@ -8,6 +8,10 @@ listingID = '';
 
 $('body').on('submit', '.search', function(e) {
     e.preventDefault();
+    if ($(".city").val() === ''){
+      errorModal();
+      return false;
+    }
     state = $(".state").val();
     city = $(".city").val();
     bedsMin = $(".beds-min").val();
@@ -19,6 +23,10 @@ $('body').on('submit', '.search', function(e) {
     doTheThing();
   });
 
+  function errorModal(){
+    UIkit.modal("#my-id").show();
+  }
+
   $('body').on('click', '.more-info', function(e) {
     e.preventDefault();
     propertyID = e.target.getAttribute("property-id");
@@ -27,6 +35,7 @@ $('body').on('submit', '.search', function(e) {
     $(".slideshow-h3").empty();
     $(".uk-slideshow-items").empty();
     $(".property-details").empty();
+    $(".property-desc").empty();
 
     var settings = {
       "async": true,
@@ -40,9 +49,13 @@ $('body').on('submit', '.search', function(e) {
     }
     $.ajax(settings).done(function (response) {
       console.log(response);
+      
+      
+
+
       $(".slideshow-h1").text(response.listing.address.line);
       $(".slideshow-h3").text(response.listing.address.city + ", " + response.listing.address.state_code);
-      $(".slideshow-desc").text(response.listing.description);
+      $(".property-desc").text(response.listing.description);
 
       for (i = 0; i < response.listing.photos.length; i++){
         var slideShowLi = $("<li>");
@@ -60,7 +73,7 @@ $('body').on('submit', '.search', function(e) {
         $(".property-details").append(featuresLi)
       }
 
-
+    
     });
   });
 
@@ -98,10 +111,12 @@ var settings = {
         var infoButton = $("<button>");
         infoButton.attr("type", "button");
         infoButton.addClass("button");
-        infoButton.addClass("more-info");
+        infoButton.addClass("more-info uk-button uk-button-default uk-margin-small-right");
+        infoButton.attr("tpye", "button");
+        infoButton.attr("uk-toggle", "target: #modal-close-default");
         infoButton.attr("listing-id", response.properties[i].listing_id);
         infoButton.attr("property-id", response.properties[i].property_id);
-        infoButton.text("More Information")
+        infoButton.text("More Info")
 
 
         var propertyInfo = $("<ul>");

@@ -104,20 +104,7 @@ baths_min -->
         </div>
     </div>
     <!-- SLIDESHOW CONTENT -->
-    <div class="uk-container hide slideshowContainer">
-    <div uk-slideshow="animation: push" style="width: 50%; margin: 0 auto;">
-      <h1 class="slideshow-h1"></h1>
-      <h3 class="slideshow-h3"></h3>
-      <p class="slideshow-desc"></p>
-        <ul class="property-details"></ul>
-          <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
-              <ul class="uk-slideshow-items"></ul>
-              <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
-              <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>      
-          </div>  
-        <ul class="uk-slideshow-nav uk-dotnav uk-flex-center uk-margin"></ul>
-    </div>
-    </div>
+ 
     <!-- END SLIDESHOW -->
 
 <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/js/uikit.min.js"></script>
@@ -125,6 +112,35 @@ baths_min -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="test.js"></script>
 
+<!-- This is the modal with the default close button -->
+<div id="modal-close-default" uk-modal>
+  <div class="uk-modal-dialog uk-modal-body">
+      <button class="uk-modal-close-default" type="button" uk-close></button>
+      <div class="uk-container hide slideshowContainer">
+        <div uk-slideshow="animation: push" style="margin: 0 auto;">
+          <h1 class="slideshow-h1"></h1>
+          <h3 class="slideshow-h3"></h3>
+            <p class="property-desc"></p>
+            <ul class="property-details"></ul>
+              <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
 
+                  <ul class="uk-slideshow-items"></ul>
+                  <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+                  <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>      
+              </div>  
+            <ul class="uk-slideshow-nav uk-dotnav uk-flex-center uk-margin"></ul>
+        </div>
+        </div>
+  </div>
+</div>
+<!-- end modal -->
+<div id="my-id" class="uk-flex-top" uk-modal>
+  <div class="uk-modal-dialog uk-margin-auto-vertical">
+    <p class="error-text">Please enter a City.</p>
+  </div>
+</div>
+<!-- error modal -->
+
+<!-- end error modal -->
 </body>
 </html>
