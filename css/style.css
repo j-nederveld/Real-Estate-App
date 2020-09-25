@@ -1,3 +1,8 @@
+html{
+  max-height: 100vh;
+  background-color: #efeee7 !important;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -69,7 +74,7 @@ p {
 }
 .property-image {
       
-      max-height: 250px;
+      width: 250px;
 }
 
 .property-details {
@@ -143,4 +148,8 @@ h3.slideshow-h3 {
   border: 1px solid rgb(79,40,6);
   border-radius: 5px;
   opacity: .7;
+}
+
+ul.uk-slideshow-nav.uk-dotnav.uk-flex-center.uk-margin {
+  display: none;
 }
