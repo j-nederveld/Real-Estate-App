@@ -17,6 +17,12 @@ header {
   height: 130px;
   margin-bottom: 25px;
 }
+
+.header-div {
+  max-width: 1660px;
+  margin: 0 auto;
+}
+
 .card-ul {
   text-align: left;
   padding: 0px;
@@ -68,10 +74,9 @@ p {
     height: 500px;
 }
 .property-image {
-      width: 250px;
+      max-height: 200px;
 }
 .property-details {
-    padding: 0;
     text-align: left;
 }
 h1.slideshow-h1 {
@@ -138,3 +143,7 @@ img {
   padding: 10px;
 }
 /* old color rgb(79,40,6) */
+
+.schools-h3 {
+  margin: 20px 0;
+}

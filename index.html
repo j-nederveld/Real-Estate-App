@@ -10,7 +10,9 @@
 </head>
 <body>
     <header>
+      <div class="header-div">
         <img src="images/Landmark (8).png">
+      </div>
     </header>
     <div class="uk-container">
       <form class="search">
@@ -71,6 +73,7 @@
 <!-- beds_min
 price_max
 baths_min -->
+        
         <select class="beds-min uk-select">
           <option value="1">Beds: 1+</option>
           <option value="2">Beds: 2+</option>
@@ -92,6 +95,11 @@ baths_min -->
           <option value="2000">$2000</option>
           <option value="2500">$2500</option>
         </select>
+        <select class="results-limit uk-select">
+          <option value="24">24 results</option>
+          <option value="48">48 results</option>
+          <option value="96">96 results</option>
+        </select>
         <button type="submit" class="submit uk-button" style="margin-top: 10px">submit</button><br>
       </form>
       <div class="uk-grid-column-small uk-grid-row-large uk-child-width-1-3@s uk-text-center" uk-grid>
@@ -112,7 +120,7 @@ baths_min -->
           <h1 class="slideshow-h1"></h1>
           <h3 class="slideshow-h3"></h3>
             <p class="property-desc"></p>
-            <ul class="property-details"></ul>
+
               <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
                   <ul class="uk-slideshow-items"></ul>
                   <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
