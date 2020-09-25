@@ -17,9 +17,6 @@ $('body').on('submit', '.search', function(e) {
     bedsMin = $(".beds-min").val();
     bathsMin = $(".baths-min").val();
     priceMax = $(".price-max").val();
-    console.log(bedsMin);
-    console.log(bathsMin);
-    console.log(priceMax);
     doTheThing();
   });
 
@@ -47,12 +44,7 @@ $('body').on('submit', '.search', function(e) {
         "x-rapidapi-key": "16ab730a53msh0550f13b995e7e9p1584a5jsn6d2b5305918d"
       }
     }
-    $.ajax(settings).done(function (response) {
-      console.log(response);
-      
-      
-
-
+    $.ajax(settings).done(function (response) {      
       $(".slideshow-h1").text(response.listing.address.line);
       $(".slideshow-h3").text(response.listing.address.city + ", " + response.listing.address.state_code);
       $(".property-desc").text(response.listing.description);
@@ -72,14 +64,8 @@ $('body').on('submit', '.search', function(e) {
         featuresLi.text(response.listing.features[1].text[i]);
         $(".property-details").append(featuresLi)
       }
-
-    
     });
   });
-
-  
-
-
 
 function doTheThing() {
 var settings = {
@@ -95,7 +81,6 @@ var settings = {
   
   $.ajax(settings).done(function (response) {
     var cardGrid = $("<div>");
-    console.log(response);
     for (i = 0; i < response.properties.length; i++) {
         var cardDiv = $("<div>");
         var propertyInfo = $("<ul>");
