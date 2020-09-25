@@ -3,8 +3,21 @@ state = $(".state").val();
 bedsMin = $(".beds-min").val();
 bathsMin = $(".baths-min").val();
 priceMax = $(".price-max").val();
+limit = $(".results-limit").val();
 propertyID = '';
 listingID = '';
+var schools = $("<h3>");
+var details = $("<h3>");
+details.addClass("details-h3");
+details.text("Amenities:")
+
+schools.addClass("schools-h3")
+schools.text("Local Schools:")
+var schoolsList = $("<ul>");
+var propertyDetails = $("<ul>");
+propertyDetails.addClass("property-details");
+
+
 
 $('body').on('submit', '.search', function(e) {
     e.preventDefault();
@@ -17,6 +30,7 @@ $('body').on('submit', '.search', function(e) {
     bedsMin = $(".beds-min").val();
     bathsMin = $(".baths-min").val();
     priceMax = $(".price-max").val();
+    limit = $(".results-limit").val();
     doTheThing();
   });
 
@@ -51,6 +65,18 @@ $('body').on('submit', '.search', function(e) {
       $(".slideshow-h3").text(response.listing.address.city + ", " + response.listing.address.state_code);
       $(".property-desc").text(response.listing.description);
 
+      $(".property-desc").append(schools)
+      for (i = 0; i < response.listing.school_catchments.length; i++){
+        console.log(response.listing.school_catchments[i].name)
+        var schoolNames = $("<li>");
+        schoolNames.text(response.listing.school_catchments[i].name);
+        schoolsList.append(schoolNames);
+        $(".schools-h3").append(schoolsList);
+        $(".schools-h3").append(details);
+        details.append(propertyDetails)
+
+      }
+
       for (i = 0; i < response.listing.photos.length; i++){
         var slideShowLi = $("<li>");
         var slideShowImage = $("<img>");
@@ -76,7 +102,7 @@ $("#searchResults").empty();
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "https://realtor.p.rapidapi.com/properties/v2/list-for-rent?sort=relevance&city=" + city + "&state_code=" + state + "&beds_min=" + bedsMin + "&baths_min=" + bathsMin + "&price_max=" + priceMax + "&limit=100&offset=0",
+    "url": "https://realtor.p.rapidapi.com/properties/v2/list-for-rent?sort=relevance&city=" + city + "&state_code=" + state + "&beds_min=" + bedsMin + "&baths_min=" + bathsMin + "&price_max=" + priceMax + "&limit=" + limit + "&offset=0",
     "method": "GET",
     "headers": {
       "x-rapidapi-host": "realtor.p.rapidapi.com",
@@ -116,8 +142,6 @@ var settings = {
         infoButton.attr("uk-toggle", "target: #modal-close-default");
         infoButton.attr("listing-id", response.properties[i].listing_id);
         infoButton.attr("property-id", response.properties[i].property_id);        
-        cardDiv.attr("lat", response.properties[i].address.lat);
-        cardDiv.attr("lon", response.properties[i].address.lon);
         propertyImage.attr("listing-id", response.properties[i].listing_id);
         propertyImage.attr("property-id", response.properties[i].property_id);
         innerDiv.attr("result", i);
