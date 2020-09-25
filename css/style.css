@@ -79,7 +79,6 @@ body {
       }
 
       .property-details {
-        padding: 0;
         text-align: left;
       }
 
@@ -133,3 +132,16 @@ body {
   .error-text {
     color: #000;
   }
+
+  .button.more-info.uk-button.uk-button-default.uk-margin-small-right {
+    margin: 0 auto !important;
+    background-color: #efeee7;
+    border: 1px solid rgb(79,40,6);
+    border-radius: 5px;
+}
+
+.button.more-info.uk-button.uk-button-default.uk-margin-small-right:hover {
+  background-color: #efeee7;
+  opacity: .7;
+  border-radius: 5px;
+}
