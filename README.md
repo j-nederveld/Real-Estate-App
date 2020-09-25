@@ -10,6 +10,9 @@ https://github.com/j-nederveld/Real-Estate-App/projects/1
 Link to the Project Repo: 
 https://github.com/j-nederveld/Real-Estate-App
 
+Link to depoloyed page:
+https://j-nederveld.github.io/Real-Estate-App/
+
 Burndown Schedule: 
     Elliot: HTML/CSS/Uikit
     Samer: HTML/CSS/Uikit
@@ -20,6 +23,8 @@ Burndown Schedule:
          - start putting information from our API's onto the page 
     9/24-25 - organize and style data
          - create any further functionality
+
+
 
 Overview of the project: 
     As a homebuyer, I want to see greater information on the area that I am looking at in order to be more confident in my real estate purchase. 
