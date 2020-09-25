@@ -37,7 +37,17 @@ API's and CSS framwork:
     OpenWeather: https://openweathermap.org/api
     Uikit: https://getuikit.com/v2/
    
-Wireframes and Mockups: 
+Wireframes and Mockups:
+
+Presentation requirements:
+
+Elevator pitch: a one minute description of your application
+
+Concept: What is your user story? What was your motivation for development?
+
+Process: What were the technologies used? How were tasks and roles broken down and assigned?What challenges did you encounter? What were your successes?
+
+Directions for Future Development:
 
 # Project 1
 ## Application Requirements
