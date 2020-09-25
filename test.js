@@ -95,46 +95,47 @@ var settings = {
   
   $.ajax(settings).done(function (response) {
     var cardGrid = $("<div>");
+    console.log(response);
     for (i = 0; i < response.properties.length; i++) {
         var cardDiv = $("<div>");
-        
+        var propertyInfo = $("<ul>");
         var innerDiv = $("<div>");
         var propertyImage = $("<img>");
+        var address = $("<li>");
+        var cityState = $("<li>");
+        var propertyType = $("<li>");
+        var propertyURL = $("<li>");
+        var infoButton = $("<button>");
+
         if (response.properties[i].photo_count != 0){
         propertyImage.attr("src", response.properties[i].photos[0].href);
         }
 
         cardGrid.addClass("uk-grid-column-small uk-grid-row-large uk-child-width-1-3@s uk-text-center");
-        cardGrid.attr("uk-grid", "")
         cardDiv.addClass("uk-card uk-card-default uk-card-body");
-  
-        var infoButton = $("<button>");
-        infoButton.attr("type", "button");
         infoButton.addClass("button");
         infoButton.addClass("more-info uk-button uk-button-default uk-margin-small-right");
+        propertyInfo.addClass("card-ul");
+        cardDiv.addClass("card");
+        propertyImage.addClass("property-image");
+        innerDiv.addClass("result-card");
+
+        cardGrid.attr("uk-grid", "");
+        infoButton.attr("type", "button");
         infoButton.attr("tpye", "button");
         infoButton.attr("uk-toggle", "target: #modal-close-default");
         infoButton.attr("listing-id", response.properties[i].listing_id);
-        infoButton.attr("property-id", response.properties[i].property_id);
-        infoButton.text("More Info")
-
-
-        var propertyInfo = $("<ul>");
-        propertyInfo.addClass("card-ul");
-        var address = $("<li>");
-        var cityState = $("<li>");
-        var propertyType = $("<li>");
-        var propertyURL = $("<li>");
-        cardDiv.addClass("card");
+        infoButton.attr("property-id", response.properties[i].property_id);        
         cardDiv.attr("lat", response.properties[i].address.lat);
         cardDiv.attr("lon", response.properties[i].address.lon);
-        propertyImage.addClass("property-image");
         propertyImage.attr("listing-id", response.properties[i].listing_id);
         propertyImage.attr("property-id", response.properties[i].property_id);
+        innerDiv.attr("result", i);
 
         address.text(response.properties[i].address.line);
         cityState.text(city + ', ' + state);
         propertyType.text(response.properties[i].prop_type);
+        infoButton.text("More Info");
         propertyURL.html("<a href=" + response.properties[i].rdc_web_url + ">Link to Property</a>");
         propertyInfo.append(address);
         propertyInfo.append(cityState);
@@ -143,9 +144,9 @@ var settings = {
         cardDiv.append(propertyInfo);
         cardDiv.append(infoButton);
         cardDiv.prepend(propertyImage);
-        innerDiv.attr("result", i)
         innerDiv.append(cardDiv);
         $(".uk-grid-column-small").append(innerDiv);
-    }
+      }      
   })
 }
+
