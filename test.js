@@ -70,6 +70,9 @@ $('body').on('submit', '.search', function(e) {
   });
 
 function doTheThing() {
+  
+$("#searchResults").empty();
+
 var settings = {
     "async": true,
     "crossDomain": true,
