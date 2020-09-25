@@ -41,10 +41,12 @@ $('body').on('submit', '.search', function(e) {
       "method": "GET",
       "headers": {
         "x-rapidapi-host": "realtor.p.rapidapi.com",
-        "x-rapidapi-key": "16ab730a53msh0550f13b995e7e9p1584a5jsn6d2b5305918d"
+        "x-rapidapi-key": "f01f3e944fmsh3ad5fc7e5b2eef4p165b37jsn480129929052"
       }
     }
     $.ajax(settings).done(function (response) {      
+      console.log(response)
+
       $(".slideshow-h1").text(response.listing.address.line);
       $(".slideshow-h3").text(response.listing.address.city + ", " + response.listing.address.state_code);
       $(".property-desc").text(response.listing.description);
@@ -75,7 +77,7 @@ var settings = {
     "method": "GET",
     "headers": {
       "x-rapidapi-host": "realtor.p.rapidapi.com",
-      "x-rapidapi-key": "16ab730a53msh0550f13b995e7e9p1584a5jsn6d2b5305918d"
+      "x-rapidapi-key": "f01f3e944fmsh3ad5fc7e5b2eef4p165b37jsn480129929052"
     }
   }
   
