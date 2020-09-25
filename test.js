@@ -48,6 +48,13 @@ $('body').on('submit', '.search', function(e) {
     $(".property-details").empty();
     $(".property-desc").empty();
 
+
+
+
+
+
+
+    
     var settings = {
       "async": true,
       "crossDomain": true,
