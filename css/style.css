@@ -144,11 +144,6 @@ img {
 }
 /* old color rgb(79,40,6) */
 
-.schools-h3 {
-  margin: 20px 0;
-  font-size: 20px;
-  color: #000;
-}
 
 svg {
   padding-bottom: 6px;
@@ -173,9 +168,18 @@ footer {
   padding: 0px;
 }
 
-.property-info, .weather-info {
+.property-info, .additional-info {
     margin: 0 !important;
     margin-bottom: 20px !important;
     padding: 20px 40px !important;
 
+}
+
+.noStyle {
+  list-style-type: none;
+  font-size: 20px;
+}
+
+.modal-h2{
+  text-decoration: underline;
 }
