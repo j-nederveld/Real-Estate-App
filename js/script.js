@@ -39,6 +39,15 @@ $('body').on('click', '.more-info', function (e) {
   $(".property-details").empty();
   $(".property-desc").empty();
   $(".property-info").empty();
+  $(".additional-info").empty();
+  var propertyInfoH2 = $("<h2>");
+  var additionalInfoH2 = $("<h2>");
+  propertyInfoH2.addClass("modal-h2");
+  additionalInfoH2.addClass("modal-h2");
+  propertyInfoH2.text("Property Info");
+  additionalInfoH2.text("Local Info");
+  $(".property-info").append(propertyInfoH2);
+  $(".additional-info").append(additionalInfoH2);
 
   var settings = {
     "async": true,
@@ -65,11 +74,13 @@ $('body').on('click', '.more-info', function (e) {
     var schoolsUL = $("<ul>");
     schoolsUL.addClass("modal-ul");
 
-    for (i = 0; i < response.listing.school_catchments.length; i++) {
-      console.log(response.listing.school_catchments[i].name)
-      var schoolNames = $("<li>");
-      schoolNames.text(response.listing.school_catchments[i].name);
-      schoolsUL.append(schoolNames);
+    if (response.listing.school_catchments != null) {
+      for (i = 0; i < response.listing.school_catchments.length; i++) {
+        console.log(response.listing.school_catchments[i].name)
+        var schoolNames = $("<li>");
+        schoolNames.text(response.listing.school_catchments[i].name);
+        schoolsUL.append(schoolNames);
+      }
     }
 
     var featuresHeader = $("<h3>");
@@ -97,7 +108,7 @@ $('body').on('click', '.more-info', function (e) {
     $(".property-info").append(schoolsUL);
     featuresUL.prepend(featuresHeader);
     schoolsUL.prepend(schoolsHeader);
-  
+
     // Weather
     var weatherURL = "http://api.worldweatheronline.com/premium/v1/weather.ashx?key=5be4b040100d48a7b1d235820202409&q=" + zip + "&date=2020-01-01&enddate=2020-12-31&format=json";
 
@@ -109,29 +120,61 @@ $('body').on('click', '.more-info', function (e) {
       console.log(weatherURL);
       console.log(weatherResponse);
       console.log("test");
+      // Header for average temperture
+
+      var weatherh3 = $("<h3>");
+      weatherh3.text("City's Average Temperatures: ");
+      // ul's
+      var weatherUl = $("<ul>");
+      var springLi = $("<li>");
+      var springLiTemp = $("<li>");
+      var summerLi = $("<li>");
+      var summerLiTemp = $("<li>");
+      var fallLi = $("<li>");
+      var fallLiTemp = $("<li>");
+      var winterLi = $("<li>");
+      var winterLiTemp = $("<li>");
+
       // Spring min/max temp
-      console.log("Spring min/max temp");
-      console.log(weatherResponse.data.ClimateAverages[0].month[3].avgMinTemp_F);
-      console.log(weatherResponse.data.ClimateAverages[0].month[3].absMaxTemp_F);
+      springLi.text("Spring's Temperatures: ")
+      springLiTemp.text(weatherResponse.data.ClimateAverages[0].month[3].avgMinTemp_F + "\xB0" + " - " + weatherResponse.data.ClimateAverages[0].month[3].absMaxTemp_F + "\xB0");
       // Summer min/max temp
-      console.log("Summer min/max temp");
-      console.log(weatherResponse.data.ClimateAverages[0].month[5].avgMinTemp_F);
-      console.log(weatherResponse.data.ClimateAverages[0].month[5].absMaxTemp_F);
+      summerLi.text("Summer's Temperatures: ")
+      summerLiTemp.text(weatherResponse.data.ClimateAverages[0].month[5].avgMinTemp_F + "\xB0" + " - " + weatherResponse.data.ClimateAverages[0].month[5].absMaxTemp_F + "\xB0");
       // Fall min/max temp
-      console.log("Fall min/max temp");
-      console.log(weatherResponse.data.ClimateAverages[0].month[8].avgMinTemp_F);
-      console.log(weatherResponse.data.ClimateAverages[0].month[8].absMaxTemp_F);
+      fallLi.text("Fall's Temperatures: ")
+      fallLiTemp.text(weatherResponse.data.ClimateAverages[0].month[8].avgMinTemp_F + "\xB0" + " - " + weatherResponse.data.ClimateAverages[0].month[8].absMaxTemp_F + "\xB0");
       // Winter min/max temp
-      console.log("December min/max temp");
-      console.log(weatherResponse.data.ClimateAverages[0].month[11].avgMinTemp_F);
-      console.log(weatherResponse.data.ClimateAverages[0].month[11].absMaxTemp_F);
-  
+      winterLi.text("Winter's Temperatures: ")
+      winterLiTemp.text(weatherResponse.data.ClimateAverages[0].month[11].avgMinTemp_F + "\xB0" + " - " + weatherResponse.data.ClimateAverages[0].month[11].absMaxTemp_F + "\xB0");
+
+      // Appends
+      weatherUl.append(weatherh3)
+      weatherUl.append(springLi);
+      weatherUl.append(springLiTemp);
+      weatherUl.append(summerLi);
+      weatherUl.append(summerLiTemp);
+      weatherUl.append(fallLi);
+      weatherUl.append(fallLiTemp);
+      weatherUl.append(winterLi);
+      weatherUl.append(winterLiTemp);
+
+      // add class
+      weatherUl.addClass("modal-ul");
+      springLi.addClass("noStyle");
+      summerLi.addClass("noStyle");
+      fallLi.addClass("noStyle");
+      winterLi.addClass("noStyle");
+
+      // Append w3/ul
+      $(".additional-info").append(weatherUl)
+
     });
-  
-  
+
+
     // Air quality
     var airURL = "https://api.weatherbit.io/v2.0/forecast/airquality?lat=" + lat + "&lon=" + long + "&key=dfa7440a3f3e4f539ce11b040f486d22";
-  
+
     $.ajax({
       url: airURL,
       method: "GET"
@@ -143,17 +186,17 @@ $('body').on('click', '.more-info', function (e) {
       console.log(airResponse.data[0].aqi);
 
     });
-  
-  
+
+
     // Gas price
     var gasURL = "https://api.collectapi.com/gasPrice/fromCoordinates?lng=" + long + "&lat=" + lat;
-  
+
     $.ajax({
       url: gasURL,
       method: "GET",
       headers: { "Authorization": "apikey 1eoi3HRiAnugLyw6Y99v9Y:2uljHBfqlMNhbJkWQUyDBa" }
     }).then(function (gasResponse) {
-      console.log("Average gas price: $" + Math.round(gasResponse.result.gasoline * 100)/100);
+      console.log("Average gas price: $" + Math.round(gasResponse.result.gasoline * 100) / 100);
     });
   });
 });
