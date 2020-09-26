@@ -110,7 +110,7 @@ $('body').on('click', '.more-info', function (e) {
     schoolsUL.prepend(schoolsHeader);
 
     // Weather
-    var weatherURL = "http://api.worldweatheronline.com/premium/v1/weather.ashx?key=5be4b040100d48a7b1d235820202409&q=" + zip + "&date=2020-01-01&enddate=2020-12-31&format=json";
+    var weatherURL = "https://api.worldweatheronline.com/premium/v1/weather.ashx?key=5be4b040100d48a7b1d235820202409&q=" + zip + "&date=2020-01-01&enddate=2020-12-31&format=json";
 
     $.ajax({
       url: weatherURL,
