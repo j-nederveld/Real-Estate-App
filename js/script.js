@@ -193,12 +193,15 @@ $('body').on('click', '.more-info', function (e) {
       //variables
       var airUl = $("<ul>");
       var airLi = $("<li>");
+      var airSpan = $("<span>")
 
       // Current air quality
-      airLi.text("Air Quality Index: " + airResponse.data[0].aqi);
+      airLi.text("Air Quality Index: ")
+      airSpan.text(airResponse.data[0].aqi);
 
       // append's
       airUl.append(airH3);
+      airLi.append(airSpan);
 
       // Append w3/ul
       airUl.append(airLi);
@@ -207,6 +210,30 @@ $('body').on('click', '.more-info', function (e) {
       // Styling
       airUl.addClass("modal-ul");
 
+      if (airResponse.data[0].aqi < 51){
+        airSpan.addClass("good-airQuality")
+        airSpan.removeClass("fair-airQuality")
+        airSpan.removeClass("poor-airQuality")
+        airSpan.removeClass("bad-airQuality")
+      }
+      if (airResponse.data[0].aqi > 50 && airResponse.data[0].aqi < 101){
+        airSpan.removeClass("good-airQuality")
+        airSpan.addClass("fair-airQuality")
+        airSpan.removeClass("poor-airQuality")
+        airSpan.removeClass("bad-airQuality")
+      }
+      if (airResponse.data[0].aqi > 101 && airResponse.data[0].aqi < 151){
+        airSpan.removeClass("good-airQuality")
+        airSpan.removeClass("fair-airQuality")
+        airSpan.addClass("poor-airQuality")
+        airSpan.removeClass("bad-airQuality")
+      }
+      if (airResponse.data[0].aqi > 150){
+        airSpan.removeClass("good-airQuality")
+        airSpan.removeClass("fair-airQuality")
+        airSpan.removeClass("poor-airQuality")
+        airSpan.addClass("bad-airQuality")
+      }
     });
 
 
