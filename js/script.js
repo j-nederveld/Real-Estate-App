@@ -109,7 +109,7 @@ $('body').on('click', '.more-info', function (e) {
     featuresUL.prepend(featuresHeader);
     schoolsUL.prepend(schoolsHeader);
 
-    // Weather
+    // Weather API call
     var weatherURL = "http://api.worldweatheronline.com/premium/v1/weather.ashx?key=5be4b040100d48a7b1d235820202409&q=" + zip + "&date=2020-01-01&enddate=2020-12-31&format=json";
 
     $.ajax({
@@ -121,9 +121,9 @@ $('body').on('click', '.more-info', function (e) {
       console.log(weatherResponse);
       console.log("test");
 
-      // Header's for average temperture
+      // Header's for average seasonal temperture
       var weatherh3 = $("<h3>");
-      weatherh3.text("City's Average Temperatures: ");
+      weatherh3.text("City's Average Seasonal Temperatures: ");
 
       // Variables for the various UL's and Il's for the list
       var weatherUl = $("<ul>");
@@ -160,20 +160,20 @@ $('body').on('click', '.more-info', function (e) {
       weatherUl.append(winterLi);
       weatherUl.append(winterLiTemp);
 
-      // Adding styling to the weather information
+      //Weather information styling
       weatherUl.addClass("modal-ul");
       springLi.addClass("noStyle");
       summerLi.addClass("noStyle");
       fallLi.addClass("noStyle");
       winterLi.addClass("noStyle");
 
-      // Append w3/ul
+      // Append ul
       $(".additional-info").append(weatherUl)
 
     });
 
 
-    // Air quality
+    // Air quality API call
     var airURL = "https://api.weatherbit.io/v2.0/forecast/airquality?lat=" + lat + "&lon=" + long + "&key=dfa7440a3f3e4f539ce11b040f486d22";
 
     $.ajax({
@@ -186,31 +186,31 @@ $('body').on('click', '.more-info', function (e) {
       console.log(airResponse)
       console.log(airResponse.data[0].aqi);
 
-      // Header's for average air quality
+      // Header's for current air quality
       var airH3 = $("<h3>");
       airH3.text("City's Current Air Quality: ");
 
-      //variables
+      //Variables for the various UL's and Il's for the list
       var airUl = $("<ul>");
       var airLi = $("<li>");
 
       // Current air quality
       airLi.text("Air Quality Index: " + airResponse.data[0].aqi);
 
-      // append's
+      // Append h3
       airUl.append(airH3);
 
-      // Append w3/ul
+      // Append ul
       airUl.append(airLi);
       $(".additional-info").append(airUl)
 
-      // Styling
+      //Air quality styling
       airUl.addClass("modal-ul");
 
     });
 
 
-    // Gas price
+    // Gas price API call
     var gasURL = "https://api.collectapi.com/gasPrice/fromCoordinates?lng=" + long + "&lat=" + lat;
 
     $.ajax({
@@ -220,25 +220,26 @@ $('body').on('click', '.more-info', function (e) {
     }).then(function (gasResponse) {
       console.log("Average gas price: $" + Math.round(gasResponse.result.gasoline * 100) / 100);
 
-      // Header's for gas price
+      
+      //Header's for gas current price
       var gasH3 = $("<h3>");
       gasH3.text("City's Current Gas Price: ");
 
-      //variables
+      ///Variables for the various UL's and Il's for the list
       var gasUl = $("<ul>");
       var gasLi = $("<li>");
 
       // Current gas price
       gasLi.text("Gas price: $" + Math.round(gasResponse.result.gasoline * 100) / 100);
 
-      // append's
+      // Append h3
       gasUl.append(gasH3);
 
-      // Append w3/ul
+      // Append ul
       gasUl.append(gasLi);
       $(".additional-info").append(gasUl)
 
-      // Styling
+      // Gas price styling
       gasUl.addClass("modal-ul");
 
 
