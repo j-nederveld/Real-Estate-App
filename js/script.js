@@ -369,6 +369,9 @@ function doTheThing() {
       cardDiv.prepend(propertyImage);
       innerDiv.append(cardDiv);
       $(".uk-grid-column-small").append(innerDiv);
+
+    //change footer css (needs to start as fixed)
+      $("#footer").css("position", "relative");
     }
   })
 }
