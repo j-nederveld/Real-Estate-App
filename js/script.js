@@ -120,11 +120,12 @@ $('body').on('click', '.more-info', function (e) {
       console.log(weatherURL);
       console.log(weatherResponse);
       console.log("test");
-      // Header for average temperture
 
+      // Header's for average temperture
       var weatherh3 = $("<h3>");
       weatherh3.text("City's Average Temperatures: ");
-      // ul's
+
+      // Variables for the various UL's and Il's for the list
       var weatherUl = $("<ul>");
       var springLi = $("<li>");
       var springLiTemp = $("<li>");
@@ -148,7 +149,7 @@ $('body').on('click', '.more-info', function (e) {
       winterLi.text("Winter's Temperatures: ")
       winterLiTemp.text(weatherResponse.data.ClimateAverages[0].month[11].avgMinTemp_F + "\xB0" + " - " + weatherResponse.data.ClimateAverages[0].month[11].absMaxTemp_F + "\xB0");
 
-      // Appends
+      // Weather information Appends
       weatherUl.append(weatherh3)
       weatherUl.append(springLi);
       weatherUl.append(springLiTemp);
@@ -159,7 +160,7 @@ $('body').on('click', '.more-info', function (e) {
       weatherUl.append(winterLi);
       weatherUl.append(winterLiTemp);
 
-      // add class
+      // Adding styling to the weather information
       weatherUl.addClass("modal-ul");
       springLi.addClass("noStyle");
       summerLi.addClass("noStyle");
@@ -185,6 +186,27 @@ $('body').on('click', '.more-info', function (e) {
       console.log(airResponse)
       console.log(airResponse.data[0].aqi);
 
+      // Header's for average air quality
+      var airH3 = $("<h3>");
+      airH3.text("City's Current Air Quality: ");
+
+      //variables
+      var airUl = $("<ul>");
+      var airLi = $("<li>");
+
+      // Current air quality
+      airLi.text("Air Quality Index: " + airResponse.data[0].aqi);
+
+      // append's
+      airUl.append(airH3);
+
+      // Append w3/ul
+      airUl.append(airLi);
+      $(".additional-info").append(airUl)
+
+      // Styling
+      airUl.addClass("modal-ul");
+
     });
 
 
@@ -197,6 +219,31 @@ $('body').on('click', '.more-info', function (e) {
       headers: { "Authorization": "apikey 1eoi3HRiAnugLyw6Y99v9Y:2uljHBfqlMNhbJkWQUyDBa" }
     }).then(function (gasResponse) {
       console.log("Average gas price: $" + Math.round(gasResponse.result.gasoline * 100) / 100);
+
+      // Header's for gas price
+      var gasH3 = $("<h3>");
+      gasH3.text("City's Current Gas Price: ");
+
+      //variables
+      var gasUl = $("<ul>");
+      var gasLi = $("<li>");
+
+      // Current gas price
+      gasLi.text("Gas price: $" + Math.round(gasResponse.result.gasoline * 100) / 100);
+
+      // append's
+      gasUl.append(gasH3);
+
+      // Append w3/ul
+      gasUl.append(gasLi);
+      $(".additional-info").append(gasUl)
+
+      // Styling
+      gasUl.addClass("modal-ul");
+
+
+
+
     });
   });
 });
