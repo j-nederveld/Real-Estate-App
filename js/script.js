@@ -10,6 +10,7 @@ let long = '';
 let propertyID = '';
 let listingID = '';
 
+//Takes care of the form submission. If someone searches without entering a city, it will fire the errorModal function, otherwise, we are good to move on to the next function.
 $('body').on('submit', '.search', function (e) {
   e.preventDefault();
   if ($(".city").val() === '') {
@@ -25,14 +26,20 @@ $('body').on('submit', '.search', function (e) {
   doTheThing();
 });
 
+//If someone tries to search without entering a value to the "city" text input, kindly ask them to enter a city and try again.
 function errorModal() {
   UIkit.modal("#my-id").show();
 }
 
+//When a user clicks the "More Info" button, we make additional calls for data specific to that property. 
 $('body').on('click', '.more-info', function (e) {
   e.preventDefault();
+
+//Grab the listing/property id's that we added to each info button in the initial search. These will be used to get more data about the individual properties.  
   propertyID = e.target.getAttribute("property-id");
   listingID = e.target.getAttribute("listing-id");
+
+//Before populating the modal, make sure everything is emptied out from any earlier viewings
   $(".slideshow-h1").empty();
   $(".slideshow-h3").empty();
   $(".uk-slideshow-items").empty();
@@ -40,6 +47,8 @@ $('body').on('click', '.more-info', function (e) {
   $(".property-desc").empty();
   $(".property-info").empty();
   $(".additional-info").empty();
+
+//Give each column a header
   var propertyInfoH2 = $("<h2>");
   var additionalInfoH2 = $("<h2>");
   propertyInfoH2.addClass("modal-h2");
@@ -49,6 +58,8 @@ $('body').on('click', '.more-info', function (e) {
   $(".property-info").append(propertyInfoH2);
   $(".additional-info").append(additionalInfoH2);
 
+
+//Use the saved listing/property id's to make another call which provides more detailed information about the property. 
   var settings = {
     "async": true,
     "crossDomain": true,
@@ -60,7 +71,8 @@ $('body').on('click', '.more-info', function (e) {
     }
   }
   $.ajax(settings).done(function (response) {
-    console.log(response)
+  
+  //Save the latitude, longitude, and zip code for the property, so we can grab some <very> localized data that may be interesting and useful for the user.
     lat = response.listing.address.lat;
     long = response.listing.address.long;
     zip = response.listing.address.postal_code;
@@ -69,31 +81,35 @@ $('body').on('click', '.more-info', function (e) {
     $(".property-desc").text(response.listing.description);
 
 
+  //Set up area for local school information
     var schoolsHeader = $("<h3>");
     schoolsHeader.text("Local Schools:")
     var schoolsUL = $("<ul>");
     schoolsUL.addClass("modal-ul");
 
+  //Make sure the school data is there, and then add the info if it is
     if (response.listing.school_catchments != null) {
       for (i = 0; i < response.listing.school_catchments.length; i++) {
-        console.log(response.listing.school_catchments[i].name)
         var schoolNames = $("<li>");
         schoolNames.text(response.listing.school_catchments[i].name);
         schoolsUL.append(schoolNames);
       }
     }
 
+  //Display amenities provided
     var featuresHeader = $("<h3>");
     featuresHeader.text("Amenities:");
     var featuresUL = $("<ul>")
     featuresUL.addClass("modal-ul");
-
+  
+  //Create list for amenities
     for (i = 0; i < response.listing.features[1].text.length; i++) {
       var featuresLi = $("<li>");
       featuresLi.text(response.listing.features[1].text[i]);
       featuresUL.append(featuresLi);
     }
 
+  //Add slideshow with all photos provided
     for (i = 0; i < response.listing.photos.length; i++) {
       var slideShowLi = $("<li>");
       var slideShowImage = $("<img>");
@@ -104,22 +120,20 @@ $('body').on('click', '.more-info', function (e) {
       $(".slideshowContainer").removeClass("hide");
     }
 
+  //Add the elements to the modal
     $(".property-info").append(featuresUL);
     $(".property-info").append(schoolsUL);
     featuresUL.prepend(featuresHeader);
     schoolsUL.prepend(schoolsHeader);
 
     // Weather API call
-    var weatherURL = "http://api.worldweatheronline.com/premium/v1/weather.ashx?key=5be4b040100d48a7b1d235820202409&q=" + zip + "&date=2020-01-01&enddate=2020-12-31&format=json";
+    // Weather (uses the zip for the specific property chosen)
+    var weatherURL = "https://api.worldweatheronline.com/premium/v1/weather.ashx?key=5be4b040100d48a7b1d235820202409&q=" + zip + "&date=2020-01-01&enddate=2020-12-31&format=json";
 
     $.ajax({
       url: weatherURL,
       method: "GET"
     }).then(function (weatherResponse) {
-      console.log("Weather");
-      console.log(weatherURL);
-      console.log(weatherResponse);
-      console.log("test");
 
       // Header's for average seasonal temperture
       var weatherh3 = $("<h3>");
@@ -172,19 +186,14 @@ $('body').on('click', '.more-info', function (e) {
 
     });
 
-
     // Air quality API call
+    // Air quality (uses the stored lat/lon of the property. Very localized data, which is great.)
     var airURL = "https://api.weatherbit.io/v2.0/forecast/airquality?lat=" + lat + "&lon=" + long + "&key=dfa7440a3f3e4f539ce11b040f486d22";
 
     $.ajax({
       url: airURL,
       method: "GET"
     }).then(function (airResponse) {
-      console.log("Air quality");
-      // console.log(airURL);
-      // console.log(airResponse);
-      console.log(airResponse)
-      console.log(airResponse.data[0].aqi);
 
       // Header's for current air quality
       var airH3 = $("<h3>");
@@ -193,12 +202,15 @@ $('body').on('click', '.more-info', function (e) {
       //Variables for the various UL's and Il's for the list
       var airUl = $("<ul>");
       var airLi = $("<li>");
+      var airSpan = $("<span>")
 
       // Current air quality
-      airLi.text("Air Quality Index: " + airResponse.data[0].aqi);
+      airLi.text("Air Quality Index: ")
+      airSpan.text(airResponse.data[0].aqi);
 
       // Append h3
       airUl.append(airH3);
+      airLi.append(airSpan);
 
       // Append ul
       airUl.append(airLi);
@@ -207,10 +219,34 @@ $('body').on('click', '.more-info', function (e) {
       //Air quality styling
       airUl.addClass("modal-ul");
 
+      if (airResponse.data[0].aqi < 51){
+        airSpan.addClass("good-airQuality")
+        airSpan.removeClass("fair-airQuality")
+        airSpan.removeClass("poor-airQuality")
+        airSpan.removeClass("bad-airQuality")
+      }
+      if (airResponse.data[0].aqi > 50 && airResponse.data[0].aqi < 101){
+        airSpan.removeClass("good-airQuality")
+        airSpan.addClass("fair-airQuality")
+        airSpan.removeClass("poor-airQuality")
+        airSpan.removeClass("bad-airQuality")
+      }
+      if (airResponse.data[0].aqi > 101 && airResponse.data[0].aqi < 151){
+        airSpan.removeClass("good-airQuality")
+        airSpan.removeClass("fair-airQuality")
+        airSpan.addClass("poor-airQuality")
+        airSpan.removeClass("bad-airQuality")
+      }
+      if (airResponse.data[0].aqi > 150){
+        airSpan.removeClass("good-airQuality")
+        airSpan.removeClass("fair-airQuality")
+        airSpan.removeClass("poor-airQuality")
+        airSpan.addClass("bad-airQuality")
+      }
     });
 
-
     // Gas price API call
+    // Gas price (also allows us to search based on coordinates, in order to provide a more accurate representation of local prices)
     var gasURL = "https://api.collectapi.com/gasPrice/fromCoordinates?lng=" + long + "&lat=" + lat;
 
     $.ajax({
@@ -218,9 +254,7 @@ $('body').on('click', '.more-info', function (e) {
       method: "GET",
       headers: { "Authorization": "apikey 1eoi3HRiAnugLyw6Y99v9Y:2uljHBfqlMNhbJkWQUyDBa" }
     }).then(function (gasResponse) {
-      console.log("Average gas price: $" + Math.round(gasResponse.result.gasoline * 100) / 100);
-
-      
+   
       //Header's for gas current price
       var gasH3 = $("<h3>");
       gasH3.text("City's Current Gas Price: ");
@@ -241,14 +275,13 @@ $('body').on('click', '.more-info', function (e) {
 
       // Gas price styling
       gasUl.addClass("modal-ul");
-
-
-
-
     });
   });
 });
 
+/* 
+Main search function for the page. Appends user's form selections to an initial API call, which populates the page with data from the response.
+*/
 function doTheThing() {
 
   $("#searchResults").empty();
@@ -265,7 +298,11 @@ function doTheThing() {
   }
 
   $.ajax(settings).done(function (response) {
+
+    //Grid area for the cards
     var cardGrid = $("<div>");
+
+    //Creates a card with the various elements needed for displaying response info
     for (i = 0; i < response.properties.length; i++) {
       var cardDiv = $("<div>");
       var propertyInfo = $("<ul>");
@@ -277,10 +314,12 @@ function doTheThing() {
       var propertyURL = $("<li>");
       var infoButton = $("<button>");
 
-      if (response.properties[i].photo_count != 0) {
+    //This is necessary to ensure no errors for any listing that does not have a photo. Checks the photo count, and if it is more than 0, add the image.
+    if (response.properties[i].photo_count != 0) {
         propertyImage.attr("src", response.properties[i].photos[0].href);
       }
 
+    //Add the various classes for each card element
       cardGrid.addClass("uk-grid-column-small uk-grid-row-large uk-child-width-1-3@s uk-text-center");
       cardDiv.addClass("uk-card uk-card-default uk-card-body");
       infoButton.addClass("button");
@@ -289,7 +328,8 @@ function doTheThing() {
       cardDiv.addClass("card");
       propertyImage.addClass("property-image");
       innerDiv.addClass("result-card");
-
+    
+    //Set data attributes necessary for uikit, and add the listing id/property id to each button and photo for access later.
       cardGrid.attr("uk-grid", "");
       infoButton.attr("type", "button");
       infoButton.attr("tpye", "button");
@@ -300,6 +340,7 @@ function doTheThing() {
       propertyImage.attr("property-id", response.properties[i].property_id);
       innerDiv.attr("result", i);
 
+    //Add appropriate text to each element, and append to page.
       address.text(response.properties[i].address.line);
       cityState.text(city + ', ' + state);
       propertyType.text(response.properties[i].prop_type);
@@ -314,6 +355,9 @@ function doTheThing() {
       cardDiv.prepend(propertyImage);
       innerDiv.append(cardDiv);
       $(".uk-grid-column-small").append(innerDiv);
+
+    //change footer css (needs to start as fixed)
+      $("#footer").css("position", "relative");
     }
   })
 }

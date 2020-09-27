@@ -153,6 +153,7 @@ h4 {
 }
 
 footer {
+  position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -183,4 +184,30 @@ footer {
 
 .modal-h2{
   text-decoration: underline;
+}
+
+/* AQI 0-50 */
+.good-airQuality {
+  background-color: green;
+}
+
+/* AQI 51-100 */
+.fair-airQuality {
+  background-color: yellow;
+}
+
+/* AQI 101-150 */
+.poor-airQuality {
+  background-color: orange;
+}
+
+/* AQI 151+ */
+.bad-airQuality {
+  background-color: red;
+}
+.good-airQuality, .fair-airQuality, .poor-airQuality, .bad-airQuality {
+  padding: 3px;
+  border: 1px solid black;
+  border-radius: 10px;
+  color: #000;
 }
