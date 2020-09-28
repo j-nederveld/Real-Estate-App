@@ -189,6 +189,7 @@ footer {
 /* AQI 0-50 */
 .good-airQuality {
   background-color: green;
+  color: #fff;
 }
 
 /* AQI 51-100 */
