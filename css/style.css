@@ -130,7 +130,7 @@ h3.slideshow-h3 {
   color: #000;
 }
 .button.more-info.uk-button.uk-button-default.uk-margin-small-right {
-  margin: 0;
+  margin: 0px !important;
   background-color: #EFEEE7;
   border: 1px solid #4F2806;
   border-radius: 5px;
