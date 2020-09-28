@@ -88,4 +88,4 @@ Directions for Future Development:
 * Must be deployed to GitHub Pages
 * Must be interactive (i.e: accept and respond to user input)
 
-![screenshot of application](images/Screen-Shot-2020-09-28-at-12.29.42-PM.png)
+![screenshot of application](https://github.com/j-nederveld/Real-Estate-App/blob/master/images/Screen%20Shot%202020-09-28%20at%2012.29.42%20PM.png)
