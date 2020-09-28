@@ -37,17 +37,32 @@ API's and CSS framwork:
     OpenWeather: https://openweathermap.org/api
     Uikit: https://getuikit.com/v2/
    
-Wireframes and Mockups:
 
-Presentation requirements:
+Presentation requirements -
 
-Elevator pitch: a one minute description of your application
+Elevator pitch: This is a real estate app that provideds localised data as well as the information of the house or apartment. 
 
-Concept: What is your user story? What was your motivation for development?
+Concept: 
+        What is your user story: As a homebuyer. 
+            I want to see greater information on the area that I am looking at.
+            In order to be more confident in my real estate purchase. 
+        What was your motivation for development?:
+              Whenever I randomly look though area's and houses on zillow I always wantted infromation on the area the property was located in and the propertly, But they only really have information on the property. Causing me to have to use a different website for addtional infromation. The application aleviates that by add the infromation on the same page as the real estae propery.
 
-Process: What were the technologies used? How were tasks and roles broken down and assigned?What challenges did you encounter? What were your successes?
+Process: 
+    What were the technologies used?: HTML,CSS,JS,Jquery,API's,Uikit 
+    How were tasks and roles broken down and assigned?: Elliot: HTML/CSS/Uikit
+                                                        Samer: HTML/CSS/Uikit
+                                                        JP: JS/Jquery/API
+                                                        Lyric: JS/Jquery/API
+    What challenges did you encounter?: All Crime rate API suck 
+    What were your successes?: Getting all the other API's too work
 
 Directions for Future Development:
+                                    Get a functioning crime rate API
+                                    Add a map that displays more infromation like "attractions" and "resturants"
+                                    Make the UI more modern
+                
 
 # Project 1
 ## Application Requirements
