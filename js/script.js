@@ -285,6 +285,9 @@ Main search function for the page. Appends user's form selections to an initial 
 function doTheThing() {
 
   $("#searchResults").empty();
+  
+      //change footer css (needs to start as fixed)
+      $("#footer").css("position", "fixed");
 
   var settings = {
     "async": true,
