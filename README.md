@@ -36,6 +36,13 @@ API's and CSS framwork:
     Crimeometer: https://www.crimeometer.com/crime-data-api
     OpenWeather: https://openweathermap.org/api
     Uikit: https://getuikit.com/v2/
+    
+    API's USED
+    Realtor API
+    World Weather Online
+    WeatherBit
+    Collect API gas price
+
    
 
 Presentation requirements -
