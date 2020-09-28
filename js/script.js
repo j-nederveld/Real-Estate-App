@@ -126,6 +126,7 @@ $('body').on('click', '.more-info', function (e) {
     featuresUL.prepend(featuresHeader);
     schoolsUL.prepend(schoolsHeader);
 
+    // Weather API call
     // Weather (uses the zip for the specific property chosen)
     var weatherURL = "https://api.worldweatheronline.com/premium/v1/weather.ashx?key=5be4b040100d48a7b1d235820202409&q=" + zip + "&date=2020-01-01&enddate=2020-12-31&format=json";
 
@@ -133,14 +134,10 @@ $('body').on('click', '.more-info', function (e) {
       url: weatherURL,
       method: "GET"
     }).then(function (weatherResponse) {
-      console.log("Weather");
-      console.log(weatherURL);
-      console.log(weatherResponse);
-      console.log("test");
 
-      // Header's for average temperture
+      // Header's for average seasonal temperture
       var weatherh3 = $("<h3>");
-      weatherh3.text("City's Average Temperatures: ");
+      weatherh3.text("City's Average Seasonal Temperatures: ");
 
       // Variables for the various UL's and Il's for the list
       var weatherUl = $("<ul>");
@@ -177,19 +174,19 @@ $('body').on('click', '.more-info', function (e) {
       weatherUl.append(winterLi);
       weatherUl.append(winterLiTemp);
 
-      // Adding styling to the weather information
+      //Weather information styling
       weatherUl.addClass("modal-ul");
       springLi.addClass("noStyle");
       summerLi.addClass("noStyle");
       fallLi.addClass("noStyle");
       winterLi.addClass("noStyle");
 
-      // Append w3/ul
+      // Append ul
       $(".additional-info").append(weatherUl)
 
     });
 
-
+    // Air quality API call
     // Air quality (uses the stored lat/lon of the property. Very localized data, which is great.)
     var airURL = "https://api.weatherbit.io/v2.0/forecast/airquality?lat=" + lat + "&lon=" + long + "&key=dfa7440a3f3e4f539ce11b040f486d22";
 
@@ -197,17 +194,12 @@ $('body').on('click', '.more-info', function (e) {
       url: airURL,
       method: "GET"
     }).then(function (airResponse) {
-      console.log("Air quality");
-      // console.log(airURL);
-      // console.log(airResponse);
-      console.log(airResponse)
-      console.log(airResponse.data[0].aqi);
 
-      // Header's for average air quality
+      // Header's for current air quality
       var airH3 = $("<h3>");
       airH3.text("City's Current Air Quality: ");
 
-      //variables
+      //Variables for the various UL's and Il's for the list
       var airUl = $("<ul>");
       var airLi = $("<li>");
       var airSpan = $("<span>")
@@ -216,15 +208,15 @@ $('body').on('click', '.more-info', function (e) {
       airLi.text("Air Quality Index: ")
       airSpan.text(airResponse.data[0].aqi);
 
-      // append's
+      // Append h3
       airUl.append(airH3);
       airLi.append(airSpan);
 
-      // Append w3/ul
+      // Append ul
       airUl.append(airLi);
       $(".additional-info").append(airUl)
 
-      // Styling
+      //Air quality styling
       airUl.addClass("modal-ul");
 
       if (airResponse.data[0].aqi < 51){
@@ -253,7 +245,7 @@ $('body').on('click', '.more-info', function (e) {
       }
     });
 
-
+    // Gas price API call
     // Gas price (also allows us to search based on coordinates, in order to provide a more accurate representation of local prices)
     var gasURL = "https://api.collectapi.com/gasPrice/fromCoordinates?lng=" + long + "&lat=" + lat;
 
@@ -262,36 +254,30 @@ $('body').on('click', '.more-info', function (e) {
       method: "GET",
       headers: { "Authorization": "apikey 1eoi3HRiAnugLyw6Y99v9Y:2uljHBfqlMNhbJkWQUyDBa" }
     }).then(function (gasResponse) {
-      console.log("Average gas price: $" + Math.round(gasResponse.result.gasoline * 100) / 100);
-
-      // Header's for gas price
+   
+      //Header's for gas current price
       var gasH3 = $("<h3>");
       gasH3.text("City's Current Gas Price: ");
 
-      //variables
+      ///Variables for the various UL's and Il's for the list
       var gasUl = $("<ul>");
       var gasLi = $("<li>");
 
       // Current gas price
       gasLi.text("Gas price: $" + Math.round(gasResponse.result.gasoline * 100) / 100);
 
-      // append's
+      // Append h3
       gasUl.append(gasH3);
 
-      // Append w3/ul
+      // Append ul
       gasUl.append(gasLi);
       $(".additional-info").append(gasUl)
 
-      // Styling
+      // Gas price styling
       gasUl.addClass("modal-ul");
-
-
-
-
     });
   });
 });
-
 
 /* 
 Main search function for the page. Appends user's form selections to an initial API call, which populates the page with data from the response.

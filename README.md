@@ -70,7 +70,6 @@ Directions for Future Development:
     Add a map that displays more infromation like "attractions" and "resturants"
     Make the UI more modern
                 
-
 # Project 1
 ## Application Requirements
 * Must use at least two server-side APIs 
