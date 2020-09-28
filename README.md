@@ -40,33 +40,39 @@ API's and CSS framwork:
 
 Presentation requirements -
 
-Elevator pitch: This is a real estate app that provideds localised data as well as the information of the house or apartment. 
+Elevator pitch: This is a real estate app that provides localised data in addition to the information of the house or apartment. 
 
 Concept: 
-        What is your user story: As a homebuyer. 
+        What is your user story: 
+            As a homebuyer. 
             I want to see greater information on the area that I am looking at.
-            In order to be more confident in my real estate purchase. 
+            In order to be more confident in my real estate purchase.
+            
         What was your motivation for development?:
-              Whenever I randomly look though area's and houses on zillow I always wantted infromation on the area the property was located in and the propertly, But they only really have information on the property. Causing me to have to use a different website for addtional infromation. The application aleviates that by add the infromation on the same page as the real estae propery.
+            Whenever I look though areas and houses on zillow, I would like more information on the area the property is located, in addition to the property info. However, they only really have information on the property itself. This causes me to have to use a different website for addtional infromation. The application aleviates that by adding the infromation on the same page as the real estae property.
 
 Process: 
-    What were the technologies used?: HTML,CSS,JS,Jquery,API's,Uikit 
-    How were tasks and roles broken down and assigned?: Elliot: HTML/CSS/Uikit
-                                                        Samer: HTML/CSS/Uikit
-                                                        JP: JS/Jquery/API
-                                                        Lyric: JS/Jquery/API
-    What challenges did you encounter?: All Crime rate API suck 
-    What were your successes?: Getting all the other API's too work
+    What were the technologies used?: 
+        HTML,CSS,JS,Jquery,API's,Uikit 
+    How were tasks and roles broken down and assigned?:
+        Elliot: HTML/CSS/Uikit
+        Samer: HTML/CSS/Uikit
+        JP: JS/Jquery/API
+        Lyric: JS/Jquery/API
+
+    What challenges did you encounter?: 
+        All Crime rate API are terrible 
+    What were your successes?: 
+        Getting all the other API's too work. Being able to provide extremely localised data based on the properties.
 
 Directions for Future Development:
-                                    Get a functioning crime rate API
-                                    Add a map that displays more infromation like "attractions" and "resturants"
-                                    Make the UI more modern
+    Get a functioning crime rate API
+    Add a map that displays more infromation like "attractions" and "resturants"
+    Make the UI more modern
                 
-
 # Project 1
 ## Application Requirements
-* Must use at least two server-side APIs
+* Must use at least two server-side APIs 
 * Must use a CSS framework _other than_ Bootstrap
 * Use at least one new third-party API
 * Must have a polished UI
