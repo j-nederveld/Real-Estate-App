@@ -80,3 +80,5 @@ Directions for Future Development:
 * Does not use alerts, confirms or prompts (look into _modals_)
 * Must be deployed to GitHub Pages
 * Must be interactive (i.e: accept and respond to user input)
+
+![screenshot of application](images/Screen-Shot-2020-09-28-at-12.29.42-PM.png)
